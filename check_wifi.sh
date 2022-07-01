@@ -1,4 +1,4 @@
-#!/bin/bash/
+#!/bin/sh
 # keep wifi alive
 ping -c3 192.168.0.1
 if [ $? != 0 ]; then

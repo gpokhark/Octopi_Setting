@@ -4,13 +4,22 @@
 
 # fixcam.sh
 - Its a shell script to set the focus, exposure for the camera.
-- It runs automctically when we start the raspberry pi, for that I added following lines at the end of the `.bashrc` file
+- It runs automctically when we start a terminal session for this raspberry pi, for that I added following lines at the end of the `.bashrc` file
     ```bash
     #run fixcam.sh at startup
     echo "Running fixcam.sh"
     sh /home/pi/Octopi_Setting/fixcam.sh
    ```
 - `undo_fixcam.sh` is a file to undo the effects of `fixcam.sh`.
+- Add following lines to `/etc/rc.local` file to automatically run the script at startup. This does not need us to start any terminal session.
+    ```bash
+    sudo nano /etc/rc.local
+    #run fixcam.sh at startup
+    echo "Running fixcam.sh"
+    sh /home/pi/Octopi_Setting/fixcam.sh
+
+    exit 0
+    ```
 
 # Raspberry pi static ip address
 - To setup static ip address for your raspberry pi - https://www.makeuseof.com/raspberry-pi-set-static-ip/

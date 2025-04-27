@@ -24,6 +24,13 @@
     ```bash
     v4l2-ctl -d /dev/video0 --list-ctrls
     ```
+- Run following steps to enable fixcam.service at boot -
+    - Copy paste the `fixcam.service` file - `sudo cp fixcam.service /etc/systemd/system/fixcam.service`.
+    - Now tell systemd to recognize the new service - `sudo systemctl daemon-reload`.
+    - Enable the service to run at boot - `sudo systemctl enable fixcam.service`.
+    - Start the service manually - `sudo systemctl start fixcam.service`.
+    - Check the status - `sudo systemctl status fixcam.service`.
+
 
 # Raspberry pi static ip address
 - To setup static ip address for your raspberry pi - https://www.makeuseof.com/raspberry-pi-set-static-ip/

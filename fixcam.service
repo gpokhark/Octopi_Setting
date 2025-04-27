@@ -1,0 +1,11 @@
+[Unit]
+Description=Fix Camera Settings at Boot
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/octopi/Octopi_Setting/fixcam.sh
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

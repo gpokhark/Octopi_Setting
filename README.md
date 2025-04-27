@@ -20,6 +20,10 @@
 
     exit 0
     ```
+- Check what controls your camera actually supports
+    ```bash
+    v4l2-ctl -d /dev/video0 --list-ctrls
+    ```
 
 # Raspberry pi static ip address
 - To setup static ip address for your raspberry pi - https://www.makeuseof.com/raspberry-pi-set-static-ip/

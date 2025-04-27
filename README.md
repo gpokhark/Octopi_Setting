@@ -23,6 +23,7 @@
 - Check what controls your camera actually supports
     ```bash
     v4l2-ctl -d /dev/video0 --list-ctrls
+    v4l2-ctl -d /dev/video0 --all # Basic device info	
     ```
 - Run following steps to enable fixcam.service at boot -
     - Copy paste the `fixcam.service` file - `sudo cp fixcam.service /etc/systemd/system/fixcam.service`.
@@ -30,7 +31,11 @@
     - Enable the service to run at boot - `sudo systemctl enable fixcam.service`.
     - Start the service manually - `sudo systemctl start fixcam.service`.
     - Check the status - `sudo systemctl status fixcam.service`.
-
+- Set following settings in the boot file -
+    ``` bash
+    sudo nano /boot/octopi.txt
+    ```
+    - Add following lines - `camera_usb_options="-r 1920x1080 -f 30"`
 
 # Raspberry pi static ip address
 - To setup static ip address for your raspberry pi - https://www.makeuseof.com/raspberry-pi-set-static-ip/

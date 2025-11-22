@@ -6,4 +6,5 @@ After=multi-user.target
 [Service]
 Type=oneshot
 ExecStart=/usr/local/bin/check_temp.sh
+# ExecStart=/bin/bash -c '/usr/local/bin/check_temp.sh >> /var/log/fan-control.log 2>&1'
 

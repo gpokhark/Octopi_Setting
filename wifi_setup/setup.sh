@@ -1,19 +1,37 @@
 #!/bin/bash
-# setup.sh — Deploys keepalive script and systemd units
+# setup_wifi.sh — Sets up Wi-Fi keepalive script and systemd service
 
 set -e
 
-echo "[+] Installing Wi-Fi keepalive"
+SCRIPT_NAME=check_wifi.sh
+SCRIPT_PATH=/usr/local/bin/check_wifi.sh
+SERVICE_FILE=wifi-keepalive.service
+TIMER_FILE=wifi-keepalive.timer
 
-sudo cp check_wifi.sh /usr/local/bin/check_wifi.sh
-sudo chmod +x /usr/local/bin/check_wifi.sh
+echo "[+] Setting up Wi-Fi keepalive..."
 
-sudo cp wifi-keepalive.service /etc/systemd/system/
-sudo cp wifi-keepalive.timer /etc/systemd/system/
+# 1. Verify script exists
+if [[ ! -f $SCRIPT_NAME ]]; then
+  echo "[✗] Missing $SCRIPT_NAME"
+  exit 1
+fi
 
+# 2. Copy and make executable
+sudo cp "$SCRIPT_NAME" "$SCRIPT_PATH"
+sudo chmod +x "$SCRIPT_PATH"
+echo "[✓] Installed $SCRIPT_NAME to $SCRIPT_PATH"
+
+# 3. Check .service references correct path
+if ! grep -q "$SCRIPT_PATH" "$SERVICE_FILE"; then
+  echo "[✗] $SERVICE_FILE does not reference $SCRIPT_PATH"
+  exit 1
+fi
+
+# 4. Install systemd unit files
+sudo cp "$SERVICE_FILE" /etc/systemd/system/
+sudo cp "$TIMER_FILE" /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable --now wifi-keepalive.timer
+sudo systemctl enable --now "$TIMER_FILE"
 
-echo "[✓] Setup complete. Timer is active:"
-systemctl list-timers | grep wifi-keepalive
+echo "[✓] Wi-Fi keepalive service and timer active."
 

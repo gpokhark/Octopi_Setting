@@ -5,5 +5,6 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/local/bin/wifi-keepalive.sh
+ExecStart=/usr/local/bin/check_wifi.sh
+# ExecStart=/bin/bash -c '/usr/local/bin/check_wifi.sh >> /var/log/wifi-keepalive.log 2>&1'
 

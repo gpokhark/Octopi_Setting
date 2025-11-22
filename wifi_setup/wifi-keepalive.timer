@@ -3,7 +3,7 @@ Description=Run Wi-Fi keepalive script every 5 minutes
 
 [Timer]
 OnBootSec=2min
-OnUnitActiveSec=5min
+OnUnitActiveSec=4min
 Persistent=true
 
 [Install]

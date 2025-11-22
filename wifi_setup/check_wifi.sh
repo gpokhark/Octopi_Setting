@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # keep wifi alive
 router_ip=$(ip route | grep default | awk '{print $3}')
 ping -c3 ${router_ip} #router ip address

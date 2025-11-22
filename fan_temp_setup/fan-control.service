@@ -1,0 +1,9 @@
+[Unit]
+Description=Temperature check to control fan
+Wants=network.target
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/check_temp.sh
+

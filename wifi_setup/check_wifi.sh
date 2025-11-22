@@ -6,9 +6,11 @@ if [ $? != 0 ]; then
   echo "......"
   echo "No network connection, restarting wlan0"
 
-  sudo ifconfig wlan0 down
+  # sudo ifconfig wlan0 down
+  sudo nmcli radio wifi off
   sleep 30
-  sudo ifconfig wlan0 up
+  # sudo ifconfig wlan0 up
+  sudo nmcli radio wifi on
 
 else
   echo "Wifi working normally."

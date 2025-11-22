@@ -1,0 +1,9 @@
+[Unit]
+Description=Check and restart Wi-Fi if connection is down
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/wifi-keepalive.sh
+

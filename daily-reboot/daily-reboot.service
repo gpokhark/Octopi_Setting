@@ -1,0 +1,7 @@
+[Unit]
+Description=Daily Reboot
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/shutdown -r now
+# ExecStart=/bin/bash -c 'echo "$(date) - Reboot triggered by systemd timer" >> /var/log/daily-reboot.log && /sbin/shutdown -r now'
